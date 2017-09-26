@@ -1,8 +1,8 @@
 var Coffee = require('../models/coffee');
 
 exports.emptyCoffee = function(req,res){
-    res.json({message: "You are dangerously running low on Coffee!"})
-}
+    res.status(200).json({message: "You are dangerously running low on Coffee!"})
+};
 
 // Create endpoint /api/coffee for POSTS
 exports.postCoffees = function(req,res){
@@ -52,18 +52,18 @@ exports.getCoffee = function(req,res){
 
 // Create endpoint /api/coffee/:coffee_id for PUT
 exports.putCoffee = function(req,res){
-    Coffee.findById(req.params.coffee_id,function(err,item){
+    Coffee.findById(req.params.coffee_id,function(err,caffeine){
         if(err){
             res.send(err)
         }
         // Update the existing coffee quantity
-        item.quantity = req.body.quantity
+        caffeine.quantity = req.body.quantity
         // Save the coffee and check for errors
-        item.save(function(err){
+        caffeine.save(function(err){
             if(err){
                 res.send(err)
             }
-            res.status(200).json({message: "Coffee Updated",data : item})
+            res.status(200).json({message: "Coffee Updated",data : caffeine})
         })
     })
 };
@@ -79,6 +79,6 @@ exports.deleteCoffee = function(req,res){
         if(!item){
             res.status(404).json({success : false,message : "Not Found" })
         }
-        res.json({message : "Coffee Successfully Deleted"})
+        res.status(201).json({message : "Coffee Successfully Deleted"})
     })
 };
