@@ -10,3 +10,6 @@ git clone https://github.com/Rahul-Barick/Coffee-Locker.git
 cd Coffee-Locker
 npm install
 ```
+## Testing the Api
+
+Test your Rest Api using [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop)
