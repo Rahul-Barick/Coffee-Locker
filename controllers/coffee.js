@@ -24,7 +24,7 @@ exports.postCoffees = function(req,res){
 
 // Create endpoint /api/coffee for GET
 exports.getCoffees = function(req,res){
-// Use the Coffee model to find a all coffees
+// Use the Coffee model to find all coffees
     Coffee.find(function(err,items){
         
         if(err){
